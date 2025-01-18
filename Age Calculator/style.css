@@ -60,3 +60,7 @@
     background-size: 30px;
     cursor: pointer;
 }
+#result{
+    font-size: 28px;
+    font-weight: 600;
+}
