@@ -76,6 +76,14 @@ body{
     cursor: pointer;
 }
 
+.quote-box button img {
+    width: 30px;
+    margin-right: 20px;
+}
+.quote-box button:nth-child(2){
+    background: transparent;
+    color:#333;
+}
 
 
 
