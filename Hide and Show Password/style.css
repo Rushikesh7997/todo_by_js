@@ -14,4 +14,17 @@ body{
     padding: 10px 20px;
     margin: 30px auto;
     align-items: center;
+    display: flex;
+}
+.container input{
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    outline: 0;
+    font-size: 24px;
+    color: #333;
+}
+.container img{
+    width: 30px;
+    cursor: pointer;
 }
