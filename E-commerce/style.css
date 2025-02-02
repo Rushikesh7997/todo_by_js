@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    
+}
+.nav{
+    display: flex;
+    border: solid 1px teal;
+    padding: 15px 20px;
+    align-items: center;
+    background: teal;
+}
+.logo{
+    flex: 1;
+}
+.menu{
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+.menu div{
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+}
