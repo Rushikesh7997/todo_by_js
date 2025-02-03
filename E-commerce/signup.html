@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SignUp Page</title>
 </head>
 <body>
     <h1>Sign up</h1>
+    <form>
+        <input id="email" type="text" placeholder="Please Enter Email Address">
+        <input id="username" type="text" placeholder="Please Enter Username">
+        <input id="mobile" type="number" placeholder="Please Enter Mobile Number">
+        <input id="password" type="password" placeholder="Please Enter Password">
+        <input type="submit" value="Sign Up">
+    </form>
 </body> 
 </html>
+
+<script>
+   document.querySelector("form").addEventListener("submit",formSubmit)
+   var userStack = JSON.parse(localStorage.getItem("userDataBase")) || [];
+
+   function formSubmit(event){
+    event.preventDefault();
+    var email = document.querySelector("#email").value
+    var username = document.querySelector("#username").value
+    var mobile = document.querySelector("#mobile").value
+    var password = document.querySelector("#password").value
+
+    var userData = {
+        userName: username,
+        emailAdd: email,
+        passWord: password,
+        mobileNumber: mobile,
+    }
+
+    userStack.push(userData);
+
+    localStorage.setItem("userDataBase", JSON.stringify(userStack));
+    alert("SignUp Successful")
+    window.location.href = "login.html"
+   }
+</script>

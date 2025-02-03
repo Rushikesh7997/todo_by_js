@@ -13,13 +13,21 @@
                 <h1>Reebok</h1>
             </div>
             <div class="menu">
-                <div>Home</div>
-                <div>Men</div>
-                <div>Women</div>
-                <div>Login</div>
-                <div>Sign Up</div>
+                <div><a href="index.html">Home</a></div>
+                <div id="men">Men</div>
+                <div onclick="window.location.href='women.html'">Women</div>
+                <div onclick="window.location.href='Login.html'">Login</div>
+                <div onclick="window.location.href='signup.html'">Sign Up</div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    document.getElementById("men").addEventListener("click",function(){
+        window.location.href="men.html"
+    });
+
+   
+</script>
