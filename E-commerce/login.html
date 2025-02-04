@@ -7,5 +7,35 @@
 </head>
 <body>
     <h1>Login</h1>
+    <form action="">
+        <input type="text" placeholder="Please Enter Username" name="" id="username">
+        <input type="password" placeholder="Please Enter Password" name="" id="password">
+        <input type="submit" value="Login">
+    </form>
 </body>
 </html>
+
+<script>
+    document.querySelector("form").addEventListener("submit", loginForm);
+
+    var regUser = JSON.parse(localStorage.getItem("userDataBase"));
+
+    function loginForm(event){
+        event.preventDefault()
+        var user = document.querySelector("#username").value;
+        var pass = document.querySelector("#password").value;
+
+        for(var i=0; i<regUser.length;i++){
+            console.log(regUser[i].userName, regUser[i].passWord)
+
+            if(regUser[i].userName == user && regUser[i].passWord == pass){
+                window.location.href = "index.html";
+                return false;
+            }
+            else{
+                alert("Incorrect Username & Password");
+                return false;
+            }
+        }
+    }
+</script>

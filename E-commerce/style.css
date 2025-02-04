@@ -32,3 +32,19 @@
     color: #fff;
     text-decoration: none;
 }
+.main-box{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.main-box img{
+    width: 150px;
+    height: 150px;
+}
+#price-flex{
+    display: flex;
+    justify-content: space-around;
+}
+#price-flex >p:nth-child(2){
+    text-decoration: line-through;
+}

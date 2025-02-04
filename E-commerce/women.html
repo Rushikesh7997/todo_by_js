@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Women</h1>
+    <div class="main-box"></div>
 </body>
 </html>
+
+
+<script>
+
+    var womenData = JSON.parse(localStorage.getItem("womenData"))
+
+  womenData.map(function (data) {
+    var div = document.createElement("div");
+
+    // Append image
+    var image = document.createElement("img");
+    image.setAttribute("src", data.img_url);
+
+    // append text
+    var name = document.createElement("p");
+    name.textContent = data.product_name;
+
+    // append price
+    var price = document.createElement("div");
+    price.setAttribute("id", "price-flex");
+
+    var p1 = document.createElement("p");
+    p1.textContent = data.price;
+
+    var p2 = document.createElement("p");
+    p2.textContent = data.strikeoff_price;
+    // p2.style.textDecoration = "line-through"
+
+    price.append(p1, p2);
+
+    // add to cart
+    var btn = document.createElement("button");
+    btn.textContent = "Add To Cart";
+
+    // append
+    div.append(image, name, price, btn);
+
+    document.querySelector(".main-box").append(div);
+  });
+</script>
