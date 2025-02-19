@@ -3,7 +3,7 @@ const question = [
         question: "which is largest animal in the world ? ",
         answer:[
             {text: "Shark", correct: false},
-            {text: "Blue Whale", correct: false},
+            {text: "Blue Whale", correct: true},
             {text: "Elephant", correct: false},
             {text: "Giraffe", correct: false},
         ]
@@ -12,7 +12,7 @@ const question = [
         question: "which is largest animal in the world ? ",
         answer:[
             {text: "Shark", correct: false},
-            {text: "Blue Whale", correct: false},
+            {text: "Blue Whale", correct: true},
             {text: "Elephant", correct: false},
             {text: "Giraffe", correct: false},
         ]
@@ -21,7 +21,7 @@ const question = [
         question: "which is largest animal in the world ? ",
         answer:[
             {text: "Shark", correct: false},
-            {text: "Blue Whale", correct: false},
+            {text: "Blue Whale", correct: true},
             {text: "Elephant", correct: false},
             {text: "Giraffe", correct: false},
         ]
@@ -30,7 +30,7 @@ const question = [
         question: "which is largest animal in the world ? ",
         answer:[
             {text: "Shark", correct: false},
-            {text: "Blue Whale", correct: false},
+            {text: "Blue Whale", correct: true},
             {text: "Elephant", correct: false},
             {text: "Giraffe", correct: false},
         ]
@@ -39,7 +39,7 @@ const question = [
         question: "which is largest animal in the world ? ",
         answer:[
             {text: "Shark", correct: false},
-            {text: "Blue Whale", correct: false},
+            {text: "Blue Whale", correct: true},
             {text: "Elephant", correct: false},
             {text: "Giraffe", correct: false},
         ]
@@ -71,15 +71,63 @@ function showQuestion(){
         button.innerHTML = answer.text;
         button.classList.add("btn");
         answerButtons.appendChild(button);
+        if(answer.correct){
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click",selectAnswer);
     })
 }
-
 
 function resetState(){
     nextButton.style.display = "none";
     while(answerButtons.firstChild){
-        answerButtons.removeChild(answerButton.firstChild);
+        answerButtons.removeChild(answerButtons.firstChild);
     }
 }
+
+function selectAnswer(e){
+    const selectBtn = e.target;
+    const isCorrect = selectBtn.dataset.correct === "true";
+    if(isCorrect){
+        selectBtn.classList.add("correct");
+        score++;
+    }
+    else{
+        selectBtn.classList.add("incorrect");
+    }
+    Array.from(answerButtons.children).forEach(button=>{
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    });
+    nextButton.style.display = "block";
+}
+
+function showScore(){
+    resetState();
+    questionElement.innerHTML = `Your Score are ${score} out of ${question.length}!`
+    nextButton.innerHTML = "Play Again";
+    nextButton.style.display = "Block";
+}
+
+function handleNextButton(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < question.length){
+        showQuestion();
+    }
+    else{
+        showScore();
+    }
+}
+
+nextButton.addEventListener("click",()=>{
+    if(currentQuestionIndex < question.length){
+        handleNextButton();
+    }
+    else{
+        startQuiz();
+    }
+})
 
 startQuiz()
