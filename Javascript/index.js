@@ -3,4 +3,4 @@ function additionNumber(number1, number2){
     return result
 }
 
-console.log(additionNumber(4,5))
+console.log(additionNumber(10,10))
